@@ -1,5 +1,3 @@
-# Social Media App
+# Social Media App Server
 
-This app uses the MERNG stack (MongoDB, Express, React, NodeJS, GraphQL).
-
-This project is still in development.
+more detail coming soon
