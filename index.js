@@ -9,6 +9,7 @@ require("dotenv").config({});
 const server = new ApolloServer({
      typeDefs,
      resolvers,
+     context: ({ req }) => ({ req }), // lets you access the headers
 });
 
 mongoose
