@@ -1,5 +1,4 @@
 import ReactDOM from "react-dom";
-import App from "./App";
 
 // Server
 import ApolloProvider from "./ApolloProvider";
