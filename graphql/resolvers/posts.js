@@ -27,8 +27,15 @@ module.exports = {
      },
      Mutation: {
           async createPost(_, { body }, context) {
+               // verify user
                const user = checkAuth(context);
 
+               // check for empty body
+               if (body.trim() === "") {
+                    throw new Error("body must not be empty");
+               }
+
+               // Generate new post
                const newPost = new Post({
                     body,
                     user: user.id,
@@ -36,15 +43,21 @@ module.exports = {
                     createdAt: new Date().toISOString(),
                });
 
+               // Save post to DB
                const post = await newPost.save();
 
+               // return post
                return post;
           },
           async deletePost(_, { postId }, context) {
+               // verify user
                const user = checkAuth(context);
 
                try {
+                    // get post by id
                     const post = await Post.findById(postId);
+
+                    // verify post owner
                     if (user.username === post.username) {
                          await post.delete();
                          return "Posted deleted successfully";
@@ -56,9 +69,12 @@ module.exports = {
                }
           },
           async likePost(_, { postId }, context) {
+               // verify user
                const { username } = checkAuth(context);
 
+               // get post
                const post = await Post.findById(postId);
+
                if (post) {
                     // checks if the post is already liked by user
                     if (post.likes.find((like) => like.username === username)) {
