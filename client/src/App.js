@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Container } from "semantic-ui-react";
 
 import "semantic-ui-css/semantic.min.css";
-import "./App.js";
+import "./App.css";
 
 // Page imports
 import Home from "./pages/Home";
