@@ -1,12 +1,18 @@
 import gql from "graphql-tag";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useMutation } from "@apollo/client";
 
+// Context
+import { AuthContext } from "./../context/auth";
+
+// Custom hooks
 import { useForm } from "./../util/hooks";
 
+// Styling
 import { Button, Form } from "semantic-ui-react";
 
-export default function Login(props) {
+function Login(props) {
+     const context = useContext(AuthContext);
      const [errors, setErrors] = useState({});
 
      const { onChange, onSubmit, values } = useForm(loginUserCallback, {
@@ -15,11 +21,12 @@ export default function Login(props) {
      });
 
      const [loginUser, { loading }] = useMutation(LOGIN_USER, {
-          update(proxy, result) {
+          update(_, { data: { login: userData } }) {
+               context.login(userData);
                props.history.push("/");
           },
           onError(err) {
-               setErrors({ value: "Invalid Username or Password" });
+               setErrors(err.graphQLErrors[0].extensions.exception.errors);
           },
           variables: values,
      });
@@ -42,6 +49,7 @@ export default function Login(props) {
                          name="username"
                          type="text"
                          value={values.username}
+                         error={errors.username ? true : false}
                          onChange={onChange}
                     />
                     <Form.Input
@@ -50,6 +58,7 @@ export default function Login(props) {
                          name="password"
                          type="password"
                          value={values.password}
+                         error={errors.password ? true : false}
                          onChange={onChange}
                     />
                     <Button type="submit" primary>
@@ -58,11 +67,11 @@ export default function Login(props) {
                </Form>
                {Object.keys(errors).length > 0 && (
                     <div className="ui error message">
-                         <div className="list">
+                         <ul className="list">
                               {Object.values(errors).map((value) => (
                                    <li key={value}>{value}</li>
                               ))}
-                         </div>
+                         </ul>
                     </div>
                )}
           </div>
@@ -71,7 +80,7 @@ export default function Login(props) {
 
 const LOGIN_USER = gql`
      mutation login($username: String!, $password: String!) {
-          login(registerInput: { username: $username, password: $password }) {
+          login(username: $username, password: $password) {
                id
                email
                username
@@ -80,3 +89,5 @@ const LOGIN_USER = gql`
           }
      }
 `;
+
+export default Login;
