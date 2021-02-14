@@ -1,17 +1,29 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Card, Icon, Label, Image, Button } from "semantic-ui-react";
 import moment from "moment";
 
+import { AuthContext } from "./../context/auth";
+import { LikeButton, DeleteButton } from "./exports";
+
 export default function PostCard({
-     post: { body, createdAt, id, username, comments, likes },
+     post: {
+          body,
+          createdAt,
+          id,
+          username,
+          comments,
+          commentCount,
+          likes,
+          likeCount,
+     },
 }) {
-     function likePost() {
-          console.log("like post");
-     }
+     const { user } = useContext(AuthContext);
+
      function commentOnPost() {
-          console.log("commentOnPostp");
+          console.log("commentOnPost");
      }
+
      return (
           <Card fluid>
                <Card.Content>
@@ -21,35 +33,32 @@ export default function PostCard({
                          src="https://react.semantic-ui.com/images/avatar/large/molly.png"
                     />
                     <Card.Header>{username}</Card.Header>
-                    <Card.Meta as={Link} to={`/post/${id}`}>
+                    <Card.Meta as={Link} to={`/posts/${id}`}>
                          {moment(createdAt).fromNow(true)}
                     </Card.Meta>
                     <Card.Description>{body}</Card.Description>
                </Card.Content>
                <Card.Content extra>
-                    {/* Like Button */}
-                    <Button as="div" labelPosition="right" onClick={likePost}>
-                         <Button color="teal" basic>
-                              <Icon name="heart" />
-                         </Button>
-                         <Label as="a" basic color="teal" pointing="left">
-                              {likes.length}
-                         </Label>
-                    </Button>
+                    <LikeButton user={user} post={{ id, likes, likeCount }} />
 
                     {/* Comment Button */}
                     <Button
-                         as="div"
                          labelPosition="right"
                          onClick={commentOnPost}
+                         as={Link}
+                         to={`/posts/${id}`}
                     >
                          <Button color="blue" basic>
                               <Icon name="comments" />
                          </Button>
-                         <Label as="a" basic color="blue" pointing="left">
+                         <Label basic color="blue" pointing="left">
                               {comments.length}
                          </Label>
                     </Button>
+
+                    {user && user.username === username && (
+                         <DeleteButton postId={id} />
+                    )}
                </Card.Content>
           </Card>
      );
