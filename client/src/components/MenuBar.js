@@ -13,47 +13,36 @@ export default function MenuBar() {
      // set path
      const path = pathname === "/" ? "home" : pathname.substr(1);
 
-     const [activeItem, setActiveItem] = useState(path);
-
-     const handleItemClick = (e, { name }) => setActiveItem(name);
-
      const menuBar = user ? (
-          <Menu pointing secondary size="massive" color="teal">
-               <Menu.Item name={user.username} active as={Link} to="/" />
-               <Menu.Item
-                    position="right"
-                    name="logout"
-                    onClick={logout}
-                    as={Link}
-                    to="/login"
-               />
-          </Menu>
-     ) : (
-          <Menu pointing secondary size="massive" color="teal">
-               <Menu.Item
-                    name="home"
-                    active={activeItem === "home"}
-                    onClick={handleItemClick}
-                    as={Link}
-                    to="/"
-               />
-               <Menu.Menu position="right">
-                    <Menu.Item
-                         name="login"
-                         active={activeItem === "login"}
-                         onClick={handleItemClick}
+          <nav className="navbar">
+               <Link to="/" className="logo">
+                    SOCIAL MEDIA
+               </Link>
+               <div className="user-options">
+                    <button
+                         position="right"
+                         onClick={logout}
                          as={Link}
                          to="/login"
-                    />
-                    <Menu.Item
-                         name="register"
-                         active={activeItem === "register"}
-                         onClick={handleItemClick}
-                         as={Link}
-                         to="/register"
-                    />
-               </Menu.Menu>
-          </Menu>
+                    >
+                         <i className="fas fa-sign-out-alt"></i>
+                    </button>
+               </div>
+          </nav>
+     ) : (
+          <nav className="navbar">
+               <Link to="/" className="logo">
+                    SOCIAL MEDIA
+               </Link>
+               <div className="user-options">
+                    <Link to="/login" className="option-item">
+                         LOGIN
+                    </Link>
+                    <Link to="/register" className="option-item">
+                         REGISTER
+                    </Link>
+               </div>
+          </nav>
      );
 
      return menuBar;
