@@ -27,6 +27,7 @@ export default function PostForm() {
                });
                values.body = "";
           },
+          errorPolicy: "all",
      });
 
      function createPostCallback() {
@@ -35,10 +36,11 @@ export default function PostForm() {
 
      return (
           <>
-               <Form onSubmit={onSubmit}>
+               <Form onSubmit={onSubmit} className="post-form">
                     <h2>Create a post</h2>
-                    <Form.Field>
+                    <Form.Field className="form-section">
                          <Form.Input
+                              className="form-input"
                               placeholder="Create a post"
                               name="body"
                               onChange={onChange}
@@ -46,7 +48,7 @@ export default function PostForm() {
                               error={error ? true : false}
                          />
                          <Button type="submit" color="teal">
-                              submit
+                              SUBMIT
                          </Button>
                     </Form.Field>
                </Form>

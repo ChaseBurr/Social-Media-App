@@ -47,6 +47,7 @@ export default function SinglePost(props) {
                commentInputRef.current.blur();
           },
           variables: { postId, body: comment },
+          errorPolicy: "all",
      });
 
      // Generate html
@@ -57,24 +58,27 @@ export default function SinglePost(props) {
           const { id, body, createdAt, username, comments, likes } = getPost;
 
           postMarkup = (
-               <Grid>
+               <Grid style={{ paddingTop: "60px", justifyContent: "center" }}>
                     <Grid.Row>
                          <Grid.Column width={2}>
                               <Image
                                    src="https://react.semantic-ui.com/images/avatar/large/molly.png"
                                    size="small"
                                    float="right"
+                                   style={{ borderRadius: "50%" }}
                               />
                          </Grid.Column>
 
                          <Grid.Column width={10}>
                               <Card fluid>
                                    <Card.Content>
-                                        <Card.Header>{username}</Card.Header>
-                                        <Card.Meta>
+                                        <Card.Header className="username">
+                                             {username}
+                                        </Card.Header>
+                                        <Card.Meta className="created">
                                              {moment(createdAt).fromNow(true)}
                                         </Card.Meta>
-                                        <Card.Description>
+                                        <Card.Description className="post-body">
                                              {body}
                                         </Card.Description>
                                    </Card.Content>
@@ -182,10 +186,10 @@ export default function SinglePost(props) {
                                                             }
                                                        />
                                                   )}
-                                             <Card.Header>
+                                             <Card.Header className="username">
                                                   {comment.username}
                                              </Card.Header>
-                                             <Card.Meta>
+                                             <Card.Meta className="createdat">
                                                   {moment(
                                                        comment.createdAt
                                                   ).fromNow(true)}

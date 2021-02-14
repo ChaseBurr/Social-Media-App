@@ -25,20 +25,20 @@ export default function PostCard({
      }
 
      return (
-          <Card fluid>
-               <Card.Content>
-                    <Image
-                         floated="right"
-                         size="mini"
-                         src="https://react.semantic-ui.com/images/avatar/large/molly.png"
-                    />
-                    <Card.Header>{username}</Card.Header>
-                    <Card.Meta as={Link} to={`/posts/${id}`}>
-                         {moment(createdAt).fromNow(true)}
-                    </Card.Meta>
-                    <Card.Description>{body}</Card.Description>
-               </Card.Content>
-               <Card.Content extra>
+          <div className="post">
+               <img
+                    src="https://react.semantic-ui.com/images/avatar/large/molly.png"
+                    alt={username}
+               />
+               <div className="post-content">
+                    <Link to={`/posts/${id}`}>
+                         <h3 className="username">{username}</h3>
+                         <p className="created">
+                              {moment(createdAt).fromNow()}
+                         </p>
+                         <p className="post-body">{body}</p>
+                    </Link>
+
                     <LikeButton user={user} post={{ id, likes, likeCount }} />
 
                     {/* Comment Button */}
@@ -55,11 +55,10 @@ export default function PostCard({
                               {comments.length}
                          </Label>
                     </Button>
-
                     {user && user.username === username && (
                          <DeleteButton postId={id} />
                     )}
-               </Card.Content>
-          </Card>
+               </div>
+          </div>
      );
 }

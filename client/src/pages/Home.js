@@ -15,36 +15,24 @@ export default function Home() {
      );
 
      return (
-          <Grid columns={3} divided>
-               <Grid.Row className="page-title">
-                    <h1>Recent Posts</h1>
-               </Grid.Row>
-               <Grid.Row>
-                    {
-                         // let user add post if logged in
-                         user && (
-                              <Grid.Column>
-                                   <PostForm />
-                              </Grid.Column>
-                         )
-                    }
+          <div className="posts">
+               {
+                    // let user add post if logged in
+                    user && <PostForm />
+               }
 
-                    {loading ? (
-                         <h1>Loading posts..</h1>
-                    ) : (
-                         <Transition.Group>
-                              {posts &&
-                                   posts.map((post) => (
-                                        <Grid.Column
-                                             key={post.id}
-                                             style={{ marginBottom: "30px" }}
-                                        >
-                                             <PostCard post={post} />
-                                        </Grid.Column>
-                                   ))}
-                         </Transition.Group>
-                    )}
-               </Grid.Row>
-          </Grid>
+               {loading ? (
+                    <h1>Loading posts..</h1>
+               ) : (
+                    <Transition.Group>
+                         {posts &&
+                              posts.map((post) => (
+                                   <Grid.Column key={post.id}>
+                                        <PostCard post={post} />
+                                   </Grid.Column>
+                              ))}
+                    </Transition.Group>
+               )}
+          </div>
      );
 }
