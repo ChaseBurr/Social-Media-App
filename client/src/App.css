@@ -12,5 +12,129 @@
 
 .ui.teal.button:focus,
 .ui.teal.buttons .button:focus {
-     background-color: #00b5ad;
+     background-color: #1abc9c;
 }
+
+body {
+     background-color: #f3f3f3;
+}
+
+:root {
+     --primary-color: #1abc9c;
+}
+
+/* NAVBAR SECTION */
+
+.navbar {
+     width: 100%;
+     height: 50px;
+     padding: 15px;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     z-index: 100;
+     background-color: var(--primary-color);
+}
+
+.navbar .logo {
+     color: white;
+     font-size: 1.8rem;
+}
+
+.user-options a {
+     cursor: pointer;
+     font-size: 1.2rem;
+     color: white;
+     text-decoration: none;
+}
+
+.user-options button {
+     outline: none;
+     border: none;
+     background: none;
+     cursor: pointer;
+     color: white;
+     text-decoration: none;
+}
+
+.user-options button i {
+     font-size: 1.2rem;
+}
+
+.option-item:not(:last-child) {
+     margin-right: 15px;
+}
+
+/* END OF NAVBAR SECTION */
+
+/* POST SECTION */
+
+.post {
+     width: 100%;
+     height: auto;
+     padding: 20px;
+     margin-bottom: 15px;
+     display: flex;
+     background-color: white;
+     border-radius: 4px;
+}
+
+.post img {
+     height: 70px;
+     width: 70px;
+     border-radius: 50%;
+}
+
+.post-content {
+     margin-left: 20px;
+}
+
+.post-form {
+     margin-bottom: 20px;
+}
+
+.username {
+     color: #0984e3;
+     letter-spacing: 1px;
+     margin-bottom: 0;
+}
+
+.created {
+     color: #a4b0be;
+     font-size: 0.75rem;
+}
+
+.posts {
+     padding-top: 60px;
+}
+
+.post-body {
+     width: 99%;
+     color: black;
+     padding-bottom: 10px;
+     margin-top: -5px;
+}
+
+/* END OF POST SECTION */
+
+/* POST FORM SECTION */
+
+.post-form {
+     margin-top: 10px;
+}
+
+.post-form .form-section {
+     display: flex;
+     padding: 0;
+}
+
+.post-form .form-section button {
+     height: 36px;
+     margin-left: 10px;
+}
+
+.post-form .form-input {
+     width: 100%;
+}
+
+/* END OF POST FORM SECTION */
