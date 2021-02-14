@@ -12,6 +12,10 @@ import { useForm } from "./../util/hooks";
 import { Button, Form } from "semantic-ui-react";
 
 function Login(props) {
+     const { user } = useContext(AuthContext);
+     if (user) {
+          window.location.href = "/";
+     }
      const context = useContext(AuthContext);
      const [errors, setErrors] = useState({});
 
