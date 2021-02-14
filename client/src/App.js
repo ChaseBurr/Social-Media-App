@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Container } from "semantic-ui-react";
 
+// CSS imports
 import "semantic-ui-css/semantic.min.css";
 import "./App.css";
 
@@ -20,8 +21,8 @@ function App() {
      return (
           <AuthProvider>
                <Router>
+                    <MenuBar />
                     <Container>
-                         <MenuBar />
                          <Route exact path="/" component={Home} />
                          <AuthRoute exact path="/login" component={Login} />
                          <AuthRoute
