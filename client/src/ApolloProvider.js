@@ -13,6 +13,7 @@ const httpLink = createHttpLink({
      uri: "http://localhost:5000",
 });
 
+// set token in the header
 const authLink = setContext(() => {
      const token = localStorage.getItem("jwtToken");
      return {
