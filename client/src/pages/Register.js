@@ -38,7 +38,6 @@ export default function Register(props) {
                setErrors(err.graphQLErrors[0].extensions.exception.errors);
           },
           variables: values,
-          errorPolicy: "all",
      });
 
      function registerUser() {

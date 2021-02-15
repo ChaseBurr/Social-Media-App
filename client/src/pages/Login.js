@@ -12,10 +12,6 @@ import { useForm } from "./../util/hooks";
 import { Button, Form } from "semantic-ui-react";
 
 function Login(props) {
-     const { user } = useContext(AuthContext);
-     if (user) {
-          window.location.href = "/";
-     }
      const context = useContext(AuthContext);
      const [errors, setErrors] = useState({});
 
@@ -31,9 +27,9 @@ function Login(props) {
           },
           onError(err) {
                setErrors(err.graphQLErrors[0].extensions.exception.errors);
+               console.log(errors);
           },
           variables: values,
-          errorPolicy: "all",
      });
 
      function loginUserCallback() {
