@@ -31,8 +31,10 @@ export default function PostCard({
                     alt={username}
                />
                <div className="post-content">
-                    <Link to={`/posts/${id}`}>
+                    <Link to={`/user/${username}`}>
                          <h3 className="username">{username}</h3>
+                    </Link>
+                    <Link to={`/posts/${id}`}>
                          <p className="created">
                               {moment(createdAt).fromNow()}
                          </p>
