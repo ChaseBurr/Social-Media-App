@@ -62,7 +62,16 @@ export const LIKE_POST_MUTATION = gql`
                     id
                     username
                }
-               #    likeCount
+          }
+     }
+`;
+
+export const USER_INFORMATION_QUERY = gql`
+     query($username: String!) {
+          getUserInfo(username: $username) {
+               createdAt
+               username
+               description
           }
      }
 `;
