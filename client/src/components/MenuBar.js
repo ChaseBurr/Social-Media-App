@@ -16,7 +16,7 @@ export default function MenuBar() {
      const menuBar = user ? (
           <nav className="navbar">
                <Link to="/" className="logo">
-                    SOCIAL MEDIA
+                    POSTS
                </Link>
                <div className="user-options">
                     <button
