@@ -9,10 +9,10 @@ import {
 
 import { setContext } from "apollo-link-context";
 
-const IP_ADDRESS = "http://localhost:5000";
+const IP_ADDRESS = process.env.REACT_APP_SERVER_IP_ADDRESS;
 
 const httpLink = createHttpLink({
-     uri: IP_ADDRESS || "http://localhost:5000",
+     uri: IP_ADDRESS,
 });
 
 // set token in the header
