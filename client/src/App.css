@@ -144,6 +144,22 @@ body {
 .user-info-page {
      margin-left: 30px;
      margin-top: 20px;
+     position: relative;
+     width: 100%;
+     min-height: 200px;
+}
+
+.user-info-page .form {
+     position: absolute;
+}
+
+.user-profile {
+     padding: 15px !important;
+}
+
+.user-profile .content img {
+     height: 150px !important;
+     width: 150px !important;
 }
 
 /* END OF USER PROFILE PAGE STYLING */
