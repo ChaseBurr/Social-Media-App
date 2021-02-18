@@ -75,3 +75,14 @@ export const USER_INFORMATION_QUERY = gql`
           }
      }
 `;
+
+export const USER_DESCRIPTION_MUTATION = gql`
+     query($username: String!, $body: String!) {
+          userDescription(username: $username, body: $body) {
+               id
+               createAt
+               username
+               description
+          }
+     }
+`;
