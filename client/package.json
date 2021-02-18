@@ -1,4 +1,5 @@
 {
+     "homepage": "https://chaseburr.github.io/Social-Media-App/",
      "name": "client",
      "version": "0.1.0",
      "private": true,
@@ -12,15 +13,16 @@
           "react": "^17.0.1",
           "react-dom": "^17.0.1",
           "react-router-dom": "^5.2.0",
-          "react-scripts": "4.0.2",
+          "react-scripts": "^4.0.2",
           "semantic-ui-css": "^2.4.1",
           "semantic-ui-react": "^2.0.3"
      },
      "scripts": {
-          "start": "react-scripts start",
-          "build": "react-scripts build",
-          "test": "react-scripts test",
-          "eject": "react-scripts eject"
+          "prod": "npm run clean && webpack --mode=production",
+          "dev": "npm run clean && webpack --config webpack.dev.js && webpack serve",
+          "clean": "rimraf ./build/*",
+          "predeploy": "npm run prod",
+          "deploy": "gh-pages -d build -r https://github.com/ChaseBurr/Social-Media-App.git"
      },
      "eslintConfig": {
           "extends": [
@@ -39,5 +41,24 @@
                "last 1 firefox version",
                "last 1 safari version"
           ]
+     },
+     "devDependencies": {
+          "@babel/core": "^7.12.16",
+          "@babel/plugin-proposal-class-properties": "^7.12.13",
+          "@babel/plugin-transform-runtime": "^7.12.15",
+          "@babel/preset-react": "^7.12.13",
+          "babel-loader": "^8.2.2",
+          "css-loader": "^5.0.2",
+          "dotenv": "^8.2.0",
+          "dotenv-webpack": "^6.0.0",
+          "file-loader": "^6.2.0",
+          "gh-pages": "^3.1.0",
+          "html-webpack-plugin": "^5.1.0",
+          "rimraf": "^3.0.2",
+          "style-loader": "^2.0.0",
+          "ttf-loader": "^1.0.2",
+          "webpack": "^5.22.0",
+          "webpack-cli": "^4.5.0",
+          "webpack-dev-server": "^3.11.2"
      }
 }
