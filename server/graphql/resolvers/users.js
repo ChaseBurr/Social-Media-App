@@ -107,7 +107,6 @@ module.exports = {
                try {
                     const user = await User.findOne({ username });
                     if (user) {
-                         console.log("this is a test");
                          return user;
                     } else throw new Error("User not found");
                } catch (error) {
