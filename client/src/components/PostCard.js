@@ -20,9 +20,7 @@ export default function PostCard({
 }) {
      const { user } = useContext(AuthContext);
 
-     function commentOnPost() {
-          console.log("commentOnPost");
-     }
+     function commentOnPost() {}
 
      return (
           <div className="post">
