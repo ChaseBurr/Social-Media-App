@@ -1,6 +1,6 @@
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { HashRouter as Router, Route } from "react-router-dom";
 import { Container } from "semantic-ui-react";
-import { useContext } from "react";
+import React, { useContext } from "react";
 
 // CSS imports
 import "semantic-ui-css/semantic.min.css";
