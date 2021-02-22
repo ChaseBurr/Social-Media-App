@@ -14,7 +14,7 @@ import { Button, Form } from "semantic-ui-react";
 export default function Register(props) {
      const { user } = useContext(AuthContext);
      if (user) {
-          window.location.href = "/";
+          props.history.push("/");
      }
 
      const context = useContext(AuthContext); // gives access to context
